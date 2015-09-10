@@ -62,39 +62,39 @@
 	    	<div class="col-sm-4">
 	    		<h3>Upgrade</h3>
 	    		<h4>Upgrades From</h4>
-	    		<div class="checkbox" id="upFrom">
+	    		<div class="checkbox">
 					<label>
-						<input type="checkbox" value="">
+						<input type="checkbox" value="" class="craftCheckbox">
 						Flame Fatalis Blade
 					</label>
 				</div>
 				<h4>Materials Needed</h4>
-				<div class="checkbox" id="mat1">
+				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="">
+						<input type="checkbox" value="" class="craftCheckbox">
 						6 Fatalis Corticies
 					</label>
 				</div>
-				<div class="checkbox" id="mat2">
+				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="">
+						<input type="checkbox" value="" class="craftCheckbox">
 						3 Fatalis Hardhorns
 					</label>
 				</div>
-				<div class="checkbox" id="mat3">
+				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="">
+						<input type="checkbox" value="" class="craftCheckbox">
 						1 Deviljho Crook
 					</label>
 				</div>
-				<div class="checkbox" id="mat4()">
+				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="">
+						<input type="checkbox" value="" class="craftCheckbox">
 						1 Large Elder Dragon Gem
 					</label>
 				</div>
 				<button id="cantMake" type="button" class="btn btn-danger">You can't make this.</button>
-				<button id="canMake" style="display: none" type="button" class="btn btn-danger">You can make this!</button>
+				<button id="canMake" style="display: none" type="button" class="btn btn-success">You can make this!</button>
 	    	</div>
 	    	<div class="col-sm-4 text-center">
 	    		<h3>Upgrade Path</h3>
@@ -137,49 +137,18 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    	var havePrev = false;
-    	var have1 = false;
-    	var have2 = false;
-    	var have3 = false;
-    	var have4 = false;
     	
     	$(document).ready(function(){
-    		var testCraft = function(){
-    			if(havePrev && have1 && have2 && have3 && have4){
+    		var testCraft2 = function(){
+    			if($(".craftCheckbox:checked").length == 5){
     				$("#cantMake").hide();
     				$("#canMake").show();
     			}else{
     				$("#cantMake").show();
     				$("#canMake").hide();
-    			}
+    			};
     		};
-    		
-    		$("#upFrom").click(function(){
-    			havePrev = !havePrev;
-    			testCraft();
-    		});
-    		
-    		$("#mat1").click(function(){
-    			have1 = !have1;
-    			testCraft();
-    		});
-    		
-    		$("#mat2").click(function(){
-    			have2 = !have2;
-    			testCraft();
-    		});
-    		
-    		$("#mat3").click(function(){
-    			testCraft();
-    			have3 = !have3;
-    		});
-    		
-    		$("#mat4").click(function(){
-    			have4 = !have4;
-    			testCraft();
-    		
-    		});
-    		
+    		$(".craftCheckbox").on("click", testCraft2);
     	});
     	
     </script>
