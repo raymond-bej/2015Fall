@@ -37,7 +37,7 @@ session_start();
               			<tbody>
                 			<tr>
                   				<td><?=$friend['Name']?></td>
-                  				<td>$friend['Goal'])?></td>
+                  				<td><?=$friend['Goal'])?></td>
                   				<td><?=$friend['Calories']?></td>
                 			</tr>
               			</tbody>
