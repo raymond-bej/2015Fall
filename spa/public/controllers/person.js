@@ -2,6 +2,7 @@
         .controller('person', function($http, alert, panel){
             var self = this;
             
+            
             $http.get("/person")
             .success(function(data){
                 self.rows = data;

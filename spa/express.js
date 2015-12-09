@@ -14,14 +14,14 @@ app.get("/person", function(req, res){
   
   person.get(null, function(err, rows){
     res.send(rows);
-  })
+  });
     
 })
 .get("/person/:id", function(req, res){
   
   person.get(req.params.id, function(err, rows){
     res.send(rows[0]);
-  })
+  });
   
 })
 .post("/person", function(req, res){
@@ -36,7 +36,7 @@ app.get("/person", function(req, res){
         return;
       }
     res.redirect("/person/" + row.id);
-  })
+  });
 })
 .delete("/person/:id", function(req, res){
   
@@ -46,25 +46,25 @@ app.get("/person", function(req, res){
       }else{
         res.send(req.params.id);
       }
-  })
+  });
   
 })
 
-.get("/keywords", function(req, res){
+/*.get("/keywords", function(req, res){
   keywords.get(null, function(err, rows){
     res.send(rows);
   })
-})
+})*/
 
 .get("/food", function(req, res){
   food.get(null, function(err, rows){
     res.send(rows);
-  })
+  });
 })
 .get("/food/:id", function(req, res){
   food.get(req.params.id, function(err, rows){
     res.send(rows[0]);
-  })
+  });
 })
 .post("/food", function(req, res){
   var errors = food.validate(req.body);
@@ -78,7 +78,7 @@ app.get("/person", function(req, res){
         return;
       }
     res.redirect("/food/" + row.id);
-  })
+  });
 })
 .delete("/food/:id", function(req, res){
   food.delete(req.params.id, function(err, rows){
@@ -87,19 +87,19 @@ app.get("/person", function(req, res){
       }else{
         res.send(req.params.id);
       }
-  })
+  });
 })
 
 
 .get("/exercise", function(req, res){
   exercise.get(null, function(err, rows){
     res.send(rows);
-  })
+  });
 })
 .get("/exercise/:id", function(req, res){
   exercise.get(req.params.id, function(err, rows){
     res.send(rows[0]);
-  })
+  });
 })
 .post("/exercise", function(req, res){
   var errors = exercise.validate(req.body);
@@ -113,7 +113,7 @@ app.get("/person", function(req, res){
         return;
       }
     res.redirect("/exercise/" + row.id);
-  })
+  });
 })
 .delete("/exercise/:id", function(req, res){
   exercise.delete(req.params.id, function(err, rows){
@@ -122,6 +122,6 @@ app.get("/person", function(req, res){
       }else{
         res.send(req.params.id);
       }
-  })
+  });
 })
 app.listen(process.env.PORT);

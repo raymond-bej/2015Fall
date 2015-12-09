@@ -12,9 +12,9 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Birthday</th>
-			<th>Type</th>
-			<th>Weight</th>
+			<th>Age</th>
+			<th>Food Goal</th>
+			<th>Excercise Goal</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -33,11 +33,9 @@
 				</th>
 
 			<td ng-if-start="row.isEditing"><input type="text" name="Name" class="form-control" placeholder="Name" ng-model="row.Name" /></td>
-			<td><input type="text" name="Birthday" class="form-control" placeholder="Birthday" ng-model="row.Birthday" /></td>
-			<td>
-				<select ng-options="option.id as option.Name for option in vm.keywords" ng-model="row.TypeId" class="form-control"></select>
-			</td>
-			<td><input type="text" name="Weight" class="form-control" placeholder="Weight" ng-model="row.Weight" /></td>
+			<td><input type="text" name="Age" class="form-control" placeholder="Age" ng-model="row.age" /></td>
+			<td><input type="text" name="Food Goal" class="form-control" placeholder="Food Goal" ng-model="row.foodGoal" /></td>
+			<td><input type="text" name="Excercise Goal" class="form-control" placeholder="Excercise Goal" ng-model="row.excerciseGoal" /></td>
 			<td ng-if-end>
 				<input type="button" value="Save" class="btn btn-primary btn-sm submit" ng-click="vm.save(row, $index)"/>
 				<input type="button" value="Cancel" class="btn btn-default btn-sm submit" ng-click="row.isEditing = false"/>

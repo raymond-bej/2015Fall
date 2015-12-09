@@ -1,10 +1,10 @@
-var mysql = require("mysql");
+var global = require("../inc/global.js")
 
 module.exports =  {
     blank: function(){ return {} },
     get: function(id, ret){
-        var conn = GetConnection();
-        var sql = 'SELECT P.*, K.Name as TypeName FROM 2015Fall_Persons P Join 2015Fall_Keywords K ON P.TypeId = K.id ';
+        var conn = global.GetConnection();
+        var sql = 'SELECT P.* FROM Persons P ';
         if(id){
           sql += " WHERE P.id = " + id;
         }
@@ -14,24 +14,23 @@ module.exports =  {
         });        
     },
     delete: function(id, ret){
-        var conn = GetConnection();
-        conn.query("DELETE FROM 2015Fall_Persons WHERE id = " + id, function(err,rows){
+        var conn = global.GetConnection();
+        conn.query("DELETE FROM Persons WHERE id = " + id, function(err,rows){
           ret(err);
           conn.end();
         });        
     },
     save: function(row, ret){
         var sql;
-        var conn = GetConnection();
+        var conn = global.GetConnection();
         //  TODO Sanitize
         if (row.id) {
-				  sql = " Update 2015Fall_Persons "
-							+ " Set Name=?, Birthday=?, TypeId=? "
+				  sql = " Update Persons Set name=?, age=?, foodGoal=?, excerciseGoal=?, "
 						  + " WHERE id = ? ";
 			  }else{
 				  sql = "INSERT INTO 2015Fall_Persons "
-						  + " (Name, Birthday, created_at, TypeId) "
-						  + "VALUES (?, ?, Now(), ? ) ";				
+						  + " (name, age, foodGoal, excerciseGoal, created_at) "
+						  + "VALUES (?, ?, ?, ?, Now() ) ";				
 			  }
 
         conn.query(sql, [row.Name, row.Birthday, row.TypeId, row.id],function(err,data){
@@ -50,13 +49,3 @@ module.exports =  {
       return errors.length ? errors : false;
     }
 };  
-
-function GetConnection(){
-        var conn = mysql.createConnection({
-          host: "localhost",
-          user: "blabla",
-          password: "1212",
-          database: "c9"
-        });
-    return conn;
-}

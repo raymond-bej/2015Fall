@@ -4,7 +4,7 @@ module.exports =  {
     GetConnection: function(){
         var conn = mysql.createConnection({
           host: "localhost",
-          user: "",
+          user: "raymond_bej",
           password: "",
           database: "c9"
         });
