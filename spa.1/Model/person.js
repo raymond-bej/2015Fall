@@ -6,7 +6,7 @@ module.exports =  {
         var conn = global.GetConnection();
         var sql = 'SELECT P.* FROM Persons P ';
         if(id){
-          sql += " WHERE P.idtable1 = " + id;
+          sql += " WHERE P.id = " + id;
         }
         conn.query(sql, function(err,rows){
           ret(err,rows);
@@ -15,7 +15,7 @@ module.exports =  {
     },
     delete: function(id, ret){
         var conn = global.GetConnection();
-        conn.query("DELETE FROM Persons WHERE idtable1 = " + id, function(err,rows){
+        conn.query("DELETE FROM Persons WHERE id = " + id, function(err,rows){
           ret(err);
           conn.end();
         });        
@@ -24,20 +24,18 @@ module.exports =  {
         var sql;
         var conn = global.GetConnection();
         //  TODO Sanitize
-        if (row.idtable1) {
-//				  sql = " Update Persons Set name=?, age=?, foodGoal=?, excerciseGoal=?, "
-//						  + " WHERE idtable1 = ? ";
-            sql = " UPDATE Persons SET name=?, age=?, foodGoal=?, excerciseGoal=? "
-						  + " WHERE idtable1=?";
+        if (row.id) {
+				  sql = " Update Persons Set name=?, age=?, foodGoal=?, excerciseGoal=?, "
+						  + " WHERE id = ? ";
 			  }else{
-				  sql = "INSERT INTO Persons "
-						  + " (name, age, foodGoal, excerciseGoal, createdAt) "
+				  sql = "INSERT INTO 2015Fall_Persons "
+						  + " (name, age, foodGoal, excerciseGoal, created_at) "
 						  + "VALUES (?, ?, ?, ?, Now() ) ";				
 			  }
 
-        conn.query(sql, [row.name, row.age, row.foodGoal, row.excerciseGoal, row.idtable1],function(err,data){
-          if(!err && !row.idtable1){
-            row.idtable1 = data.insertId;
+        conn.query(sql, [row.Name, row.Birthday, row.TypeId, row.id],function(err,data){
+          if(!err && !row.id){
+            row.id = data.insertId;
           }
           ret(err, row);
           conn.end();
@@ -46,7 +44,7 @@ module.exports =  {
     validate: function(row){
       var errors = {};
       
-      if(!row.name) errors.name = "is required"; 
+      if(!row.Name) errors.Name = "is required"; 
       
       return errors.length ? errors : false;
     }

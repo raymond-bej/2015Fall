@@ -1,15 +1,14 @@
         angular.module('app')
-        .controller('person', function($http, alert, panel){
+        .controller('food', function($http, alert, panel){
             var self = this;
             
-            
-            $http.get("/person")
+            $http.get("/food")
             .success(function(data){
                 self.rows = data;
             });
-            $http.get("/keywords")
+            $http.get("/person")
             .success(function(data){
-                self.keywords = data;
+                self.persons = data;
             });
             
             self.create = function(){
@@ -19,7 +18,7 @@
                 row.isEditing = true;
             }
             self.save = function(row, index){
-                $http.post('/person/', row)
+                $http.post('/food/', row)
                 .success(function(data){
                     data.isEditing = false;
                     self.rows[index] = data;
@@ -29,10 +28,10 @@
             }
             self.delete = function(row, index){
                 panel.show( {
-                    title: "Delete a person",
-                    body: "Are you sure you want to delete " + row.name + "?",
+                    title: "Delete a food",
+                    body: "Are you sure you want to delete " + row.Name + "?",
                     confirm: function(){
-                        $http.delete('/person/' + row.idtable1)
+                        $http.delete('/food/' + row.id)
                         .success(function(data){
                             self.rows.splice(index, 1);
                         }).error(function(data){

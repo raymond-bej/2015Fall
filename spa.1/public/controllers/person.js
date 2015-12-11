@@ -30,9 +30,9 @@
             self.delete = function(row, index){
                 panel.show( {
                     title: "Delete a person",
-                    body: "Are you sure you want to delete " + row.name + "?",
+                    body: "Are you sure you want to delete " + row.Name + "?",
                     confirm: function(){
-                        $http.delete('/person/' + row.idtable1)
+                        $http.delete('/person/' + row.id)
                         .success(function(data){
                             self.rows.splice(index, 1);
                         }).error(function(data){

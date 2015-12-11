@@ -35,7 +35,7 @@ app.get("/person", function(req, res){
         res.status(500).send(err);
         return;
       }
-    res.redirect("/person/" + row.idtable1);
+    res.redirect("/person/" + row.id);
   });
 })
 .delete("/person/:id", function(req, res){

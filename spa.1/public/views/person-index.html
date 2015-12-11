@@ -20,10 +20,10 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="row in vm.rows">
-			<td ng-if-start="!row.isEditing">{{row.name}}</td>
-			<td >{{row.age}}</td>
-			<td >{{row.foodGoal}}</td>
-			<td >{{row.excerciseGoal}}</td>
+			<td ng-if-start="!row.isEditing">{{row.Name}}</td>
+			<td >{{row.Birthday}}</td>
+			<td >{{row.TypeName}}</td>
+			<td >{{row.Weight}}</td>
 				<th ng-if-end scope="row">
 					<div class="btn-group" role="group" aria-label="...">
 						<a href="" title="View" class="btn btn-default btn-xs ajax"><i class="glyphicon glyphicon-eye-open"></i></a>
@@ -32,7 +32,7 @@
 					</div>
 				</th>
 
-			<td ng-if-start="row.isEditing"><input type="text" name="Name" class="form-control" placeholder="Name" ng-model="row.name" /></td>
+			<td ng-if-start="row.isEditing"><input type="text" name="Name" class="form-control" placeholder="Name" ng-model="row.Name" /></td>
 			<td><input type="text" name="Age" class="form-control" placeholder="Age" ng-model="row.age" /></td>
 			<td><input type="text" name="Food Goal" class="form-control" placeholder="Food Goal" ng-model="row.foodGoal" /></td>
 			<td><input type="text" name="Excercise Goal" class="form-control" placeholder="Excercise Goal" ng-model="row.excerciseGoal" /></td>
