@@ -26,7 +26,7 @@
 			<td >{{row.excerciseGoal}}</td>
 				<th ng-if-end scope="row">
 					<div class="btn-group" role="group" aria-label="...">
-						<a href="" title="View" class="btn btn-default btn-xs ajax"><i class="glyphicon glyphicon-eye-open"></i></a>
+						<a ng-href="#/person/{{row.idtable1}} " title="View" class="btn btn-default btn-xs ajax"><i class="glyphicon glyphicon-eye-open"></i></a>
 						<a ng-click="vm.edit(row, $index)" title="Edit" class="btn btn-default btn-xs edit"><i class="glyphicon glyphicon-edit"></i></a>
 						<a ng-click="vm.delete(row, $index)" title="Delete" class="btn btn-default btn-xs delete"><i class="glyphicon glyphicon-trash"></i></a>
 					</div>

@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var person = require("./Model/person");
 var food = require("./Model/food");
 var exercise = require("./Model/exercise");
-var keywords = require("./Model/keywords");
+//var keywords = require("./Model/keywords");
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,7 +35,8 @@ app.get("/person", function(req, res){
         res.status(500).send(err);
         return;
       }
-    res.redirect("/person/" + row.idtable1);
+    var url = "/person/" + row.idtable1;
+    res.redirect(url);
   });
 })
 .delete("/person/:id", function(req, res){

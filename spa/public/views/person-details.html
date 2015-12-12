@@ -1,0 +1,34 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Food Goal</th>
+			<th>Excercise Goal</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr >
+			<td ng-if-start="!vm.rows.isEditing">{{vm.rows.name}}</td>
+			<td >{{vm.rows.age}}</td>
+			<td >{{vm.rows.foodGoal}}</td>
+			<td >{{vm.rows.excerciseGoal}}</td>
+				<th ng-if-end scope="vm.rows">
+					<div class="btn-group" role="group" aria-label="...">
+						<a ng-click="vm.edit(vm.rows, $index)" title="Edit" class="btn btn-default btn-xs edit"><i class="glyphicon glyphicon-edit"></i></a>
+						<a ng-click="vm.delete(vm.rows, $index)" title="Delete" class="btn btn-default btn-xs delete"><i class="glyphicon glyphicon-trash"></i></a>
+					</div>
+				</th>
+
+			<td ng-if-start="vm.rows.isEditing"><input type="text" name="Name" class="form-control" placeholder="Name" ng-model="vm.rows.name" /></td>
+			<td><input type="text" name="Age" class="form-control" placeholder="Age" ng-model="vm.rows.age" /></td>
+			<td><input type="text" name="Food Goal" class="form-control" placeholder="Food Goal" ng-model="vm.rows.foodGoal" /></td>
+			<td><input type="text" name="Excercise Goal" class="form-control" placeholder="Excercise Goal" ng-model="vm.rows.excerciseGoal" /></td>
+			<td ng-if-end>
+				<input type="button" value="Save" class="btn btn-primary btn-sm submit" ng-click="vm.save(vm.rows, $index)"/>
+				<input type="button" value="Cancel" class="btn btn-default btn-sm submit" ng-click="vm.rows.isEditing = false"/>
+			</td>
+		</tr>
+	</tbody>
+</table>

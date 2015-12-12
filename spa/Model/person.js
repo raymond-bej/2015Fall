@@ -4,9 +4,9 @@ module.exports =  {
     blank: function(){ return {} },
     get: function(id, ret){
         var conn = global.GetConnection();
-        var sql = 'SELECT P.* FROM Persons P ';
+        var sql = "SELECT * FROM Persons ";
         if(id){
-          sql += " WHERE P.idtable1 = " + id;
+          sql += "WHERE idtable1 = " + id;
         }
         conn.query(sql, function(err,rows){
           ret(err,rows);
@@ -25,8 +25,6 @@ module.exports =  {
         var conn = global.GetConnection();
         //  TODO Sanitize
         if (row.idtable1) {
-//				  sql = " Update Persons Set name=?, age=?, foodGoal=?, excerciseGoal=?, "
-//						  + " WHERE idtable1 = ? ";
             sql = " UPDATE Persons SET name=?, age=?, foodGoal=?, excerciseGoal=? "
 						  + " WHERE idtable1=?";
 			  }else{
