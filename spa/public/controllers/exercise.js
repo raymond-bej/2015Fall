@@ -6,10 +6,6 @@
             .success(function(data){
                 self.rows = data;
             });
-            $http.get("/keywords")
-            .success(function(data){
-                self.keywords = data;
-            });
             $http.get("/person")
             .success(function(data){
                 self.persons = data;
@@ -32,7 +28,7 @@
             }
             self.delete = function(row, index){
                 panel.show( {
-                    title: "Delete a exercise",
+                    title: "Delete an exercise",
                     body: "Are you sure you want to delete " + row.Name + "?",
                     confirm: function(){
                         $http.delete('/exercise/' + row.id)

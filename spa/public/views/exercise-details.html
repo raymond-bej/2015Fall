@@ -1,0 +1,36 @@
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Name</th>
+		<th>Duration</th>
+		<th>Calories Burned</th>
+		<th>User</th>
+		<th>Actions</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr >
+			<td ng-if-start="!vm.rows.isEditing">{{vm.rows.Name}}</td>
+			<td >{{vm.rows.Duration}}</td>
+			<td >{{vm.rows.calories}}</td>
+			<td >{{vm.rows.Persons_idtable1}}</td>
+				<th ng-if-end scope="vm.rows">
+					<div class="btn-group" role="group" aria-label="...">
+						<a ng-click="vm.edit(vm.rows, $index)" title="Edit" class="btn btn-default btn-xs edit"><i class="glyphicon glyphicon-edit"></i></a>
+						<a ng-click="vm.delete(vm.rows, $index)" title="Delete" class="btn btn-default btn-xs delete"><i class="glyphicon glyphicon-trash"></i></a>
+					</div>
+				</th>
+			
+			<td ng-if-start="vm.rows.isEditing"><input type="text" name="Name" class="form-control" placeholder="Name" ng-model="vm.rows.Name" /></td>
+			<td><input type="text" name="Duration" class="form-control" placeholder="Duration" ng-model="vm.rows.Duration" /></td>
+			<td><input type="text" name="Calories Burned" class="form-control" placeholder="Calories Burned" ng-model="vm.rows.calories" /></td>
+			<td>
+				<select ng-options="option.idtable1 as option.name for option in vm.persons" ng-model="vm.rows.Persons_idtable1" class="form-control"></select>
+			</td>
+			<td ng-if-end>
+				<input type="button" value="Save" class="btn btn-primary btn-sm submit" ng-click="vm.save(vm.rows, $index)"/>
+				<input type="button" value="Cancel" class="btn btn-default btn-sm submit" ng-click="vm.rows.isEditing = false"/>
+			</td>
+		</tr>
+	</tbody>
+</table>

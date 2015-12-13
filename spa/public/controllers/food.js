@@ -29,7 +29,7 @@
             self.delete = function(row, index){
                 panel.show( {
                     title: "Delete a food",
-                    body: "Are you sure you want to delete " + row.Name + "?",
+                    body: "Are you sure you want to delete " + row.mealName + "?",
                     confirm: function(){
                         $http.delete('/food/' + row.id)
                         .success(function(data){

@@ -5,9 +5,9 @@ module.exports =  {
     blank: function(){ return {} },
     get: function(id, ret){
         var conn = g.GetConnection();
-        var sql = 'SELECT F.* FROM 2015Fall_Food_Eaten F ';
+        var sql = 'SELECT * FROM Meals ';
         if(id){
-          sql += " WHERE F.id = " + id;
+          sql += " WHERE id = " + id;
         }
         conn.query(sql, function(err,rows){
           ret(err,rows);
@@ -16,7 +16,7 @@ module.exports =  {
     },
     delete: function(id, ret){
         var conn = g.GetConnection();
-        conn.query("DELETE FROM 2015Fall_Food_Eaten WHERE id = " + id, function(err,rows){
+        conn.query("DELETE FROM Meals WHERE id = " + id, function(err,rows){
           ret(err);
           conn.end();
         });        
@@ -26,15 +26,15 @@ module.exports =  {
         var conn = g.GetConnection();
         //  TODO Sanitize
         if (row.id) {
-				  sql = " Update 2015Fall_Food_Eaten "
-							+ " Set `Name`=?, `Calories`=?, `Fat`=?, `Carbs`=?, `Fiber`=?, `Time`=?, `UserId`=? "
+				  sql = " UPDATE Meals "
+							+ " SET mealName=?, calories=?, mealTime=?, Persons_idtable1=? "
 						  + " WHERE id = ? ";
 			  }else{
-				  sql = "INSERT INTO `2015Fall_Food_Eaten` (`created_at`, `Name`, `Calories`, `Fat`, `Carbs`, `Fiber`, `Time`, `UserId`)"
-						  + "VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?) ";				
+				  sql = "INSERT INTO Meals (createdAt, mealName, calories, mealTime, Persons_idtable1) "
+						  + "VALUES (NOW(), ?, ?, ?, ?) ";				
 			  }
 
-        conn.query(sql, [row.Name, row.Calories, row.Fat, row.Carbs, row.Fiber, row.Time, row.UserId, row.id],function(err,data){
+        conn.query(sql, [row.mealName, row.calories, row.mealTime, row.Persons_idtable1, row.id],function(err,data){
           if(!err && !row.id){
             row.id = data.insertId;
           }
@@ -45,9 +45,8 @@ module.exports =  {
     validate: function(row){
       var errors = {};
       
-      if(!row.Name) errors.Name = "is required"; 
+      if(!row.mealName) errors.mealName = "is required"; 
       
       return errors.length ? errors : false;
     }
-};  
-
+};

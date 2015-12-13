@@ -14,9 +14,6 @@
 		<tr>
 			<th>Name</th>
 			<th>Calories</th>
-			<th>Fat</th>
-			<th>Carbs</th>
-			<th>Fiber</th>
 			<th>Time</th>
 			<th>User</th>
 			<th>Actions</th>
@@ -24,30 +21,24 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="row in vm.rows">
-			<td ng-if-start="!row.isEditing">{{row.Name}}</td>
-			<td >{{row.Calories}}</td>
-			<td >{{row.Fat}}</td>
-			<td >{{row.Carbs}}</td>
-			<td >{{row.Fiber}}</td>
-			<td >{{row.Time}}</td>
-			<td >{{row.UserId}}</td>
+			<td ng-if-start="!row.isEditing">{{row.mealName}}</td>
+			<td >{{row.calories}}</td>
+			<td >{{row.mealTime}}</td>
+			<td >{{row.Persons_idtable1}}</td>
 				<th ng-if-end scope="row">
 					<div class="btn-group" role="group" aria-label="...">
-						<a href="" title="View" class="btn btn-default btn-xs ajax"><i class="glyphicon glyphicon-eye-open"></i></a>
+						<a href="#/food/{{row.id}}" title="View" class="btn btn-default btn-xs ajax"><i class="glyphicon glyphicon-eye-open"></i></a>
 						<a ng-click="vm.edit(row, $index)" title="Edit" class="btn btn-default btn-xs edit"><i class="glyphicon glyphicon-edit"></i></a>
 						<a ng-click="vm.delete(row, $index)" title="Delete" class="btn btn-default btn-xs delete"><i class="glyphicon glyphicon-trash"></i></a>
 					</div>
 				</th>
 			<td ng-if-start="row.isEditing">
-				<input type="text" name="Name" class="form-control" placeholder="Name" ng-model="row.Name" />
+				<input type="text" name="Name" class="form-control" placeholder="Name" ng-model="row.mealName" />
 			</td>
-			<td><input type="text" name="Calories" class="form-control" placeholder="Calories" ng-model="row.Calories" /></td>
-			<td><input type="text" name="Fat" class="form-control" placeholder="Fat" ng-model="row.Fat" /></td>
-			<td><input type="text" name="Carbs" class="form-control" placeholder="Carbs" ng-model="row.Carbs" /></td>
-			<td><input type="text" name="Fiber" class="form-control" placeholder="Fiber" ng-model="row.Fiber" /></td>
-			<td><input type="text" name="Time" class="form-control date-time" placeholder="Time" ng-model="row.Time" /></td>
+			<td><input type="text" name="Calories" class="form-control" placeholder="Calories" ng-model="row.calories" /></td>
+			<td><input type="text" name="Time" class="form-control" placeholder="Time" ng-model="row.mealTime" /></td>
 			<td>
-				<select ng-options="option.id as option.Name for option in vm.persons" ng-model="row.UserId" class="form-control"></select>
+				<select ng-options="option.idtable1 as option.name for option in vm.persons" ng-model="row.Persons_idtable1" class="form-control"></select>
 			</td>
 			<td ng-if-end>
 				<input type="button" value="Save" class="btn btn-primary btn-sm submit" ng-click="vm.save(row, $index)"/>
