@@ -14,6 +14,14 @@ module.exports =  {
           conn.end();
         });        
     },
+    lookup: function(text, ret){
+        var conn = g.GetConnection();
+        var sql = "SELECT id, Name FROM Meals WHERE Name Like '%" + text + "%'";        
+        conn.query(sql, function(err,rows){
+          ret(err,rows);
+          conn.end();
+        });
+    },
     delete: function(id, ret){
         var conn = g.GetConnection();
         conn.query("DELETE FROM Meals WHERE id = " + id, function(err,rows){

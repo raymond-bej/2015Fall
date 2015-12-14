@@ -3,16 +3,18 @@
 	<i class="glyphicon glyphicon-plus"></i>
 	New Record
 </a>
-<a class="btn btn-success" ng-click="vm.again()">
-	<i class="glyphicon glyphicon-plus"></i>
-	Repeat Old Meal
-</a>
 <a href="#" class="btn btn-danger">
 	<i class="glyphicon glyphicon-trash"></i>
 	Delete All
 	<span class="badge">{{vm.rows.length}}</span>
 </a>
 <br />
+    <h4>Input an old meal name</h4>
+    <input type="text" ng-keypress="vm.search($viewValue)" ng-model="row.mealName" placeholder="Type a meal to duplicate" uib-typeahead="row for row in vm.select($viewValue)" typeahead-loading="loadingMeals" typeahead-no-results="noResults" class="form-control">
+    <i ng-show="loadingMeals" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
 <table class="table table-striped">
 	<thead>
 		<tr>

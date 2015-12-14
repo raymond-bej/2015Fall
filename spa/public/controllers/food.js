@@ -1,5 +1,5 @@
         angular.module('app')
-        .controller('food', function($http, alert, panel){
+        .controller('food', function($http, $scope, alert, panel){
             var self = this;
             
             $http.get("/food")
@@ -10,7 +10,12 @@
             .success(function(data){
                 self.persons = data;
             });
-            
+            self.search = function(text){
+                $http.lookup('/food', text)
+                .success(function(response){
+                    self.select = response;
+                })
+            }
             self.create = function(){
                 self.rows.push({ isEditing: true });
             }

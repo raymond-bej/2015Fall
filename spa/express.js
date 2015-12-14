@@ -63,8 +63,13 @@ app.get("/person", function(req, res){
   });
 })
 .get("/food/:id", function(req, res){
-  food.get(req.params.id, function(err, rows){
+  food.get(text, function(err, rows){
     res.send(rows[0]);
+  });
+})
+.lookup("/food/:id", function(req, res){
+  food.lookup(req.params.id, function(err, rows){
+    res.send(rows);
   });
 })
 .post("/food", function(req, res){
