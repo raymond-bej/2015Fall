@@ -3,6 +3,10 @@
 	<i class="glyphicon glyphicon-plus"></i>
 	New Record
 </a>
+<a class="btn btn-success" ng-click="vm.again()">
+	<i class="glyphicon glyphicon-plus"></i>
+	Repeat Old Meal
+</a>
 <a href="#" class="btn btn-danger">
 	<i class="glyphicon glyphicon-trash"></i>
 	Delete All
@@ -22,7 +26,7 @@
 	<tbody>
 		<tr ng-repeat="row in vm.rows">
 			<td ng-if-start="!row.isEditing">{{row.mealName}}</td>
-			<td >{{row.calories}}</td>
+			<td >{{row.Calories}}</td>
 			<td >{{row.mealTime}}</td>
 			<td >{{row.Persons_idtable1}}</td>
 				<th ng-if-end scope="row">
